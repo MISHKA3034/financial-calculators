@@ -1,5 +1,13 @@
-﻿const mode = document.currentScript.dataset.mode;
-const runtime = Blazor.start();
+﻿import { dotnet } from "../_framework/dotnet.js";
+
+const mode = new URL(import.meta.url).pathname.split("/").at(-2);
+let runtime;
+async function loadCalculator() {
+    const { getAssemblyExports, getConfig } = await dotnet.create();
+    const exports = await getAssemblyExports(getConfig().mainAssemblyName);
+    return exports.BrowserApi;
+}
+
 const form = document.querySelector("form");
 const output = document.querySelector("#output");
 const submit = form.querySelector("button");
@@ -25,8 +33,8 @@ form.addEventListener("submit", async (event) => {
     submit.disabled = true;
     output.textContent = "Выполняется расчёт…";
     try {
-        await runtime;
-        const payload = await DotNet.invokeMethodAsync("Calculators", "Calculate", mode, JSON.stringify(data));
+        const calculator = await (runtime ??= loadCalculator());
+        const payload = calculator.Calculate(mode, JSON.stringify(data));
         const result = JSON.parse(payload);
         if (result.error) {
             output.textContent = result.error;
@@ -47,4 +55,5 @@ form.addEventListener("submit", async (event) => {
         submit.disabled = false;
     }
 });
+
 
