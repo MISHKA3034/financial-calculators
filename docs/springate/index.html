@@ -1,0 +1,17 @@
+﻿<!doctype html>
+<html lang="ru">
+<head><base href="../"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Модель Спрингейта</title><link rel="stylesheet" href="springate/style.css"><script src="_framework/blazor.webassembly.js" autostart="false"></script><script src="springate/app.js" data-mode="springate" defer></script></head>
+<body><main><p><a href="./">Все калькуляторы</a></p>
+<header><h1>Модель Спрингейта</h1><p>Оценка финансового риска предприятия по четырём показателям.</p></header>
+<div class="layout"><section><h2>Исходные данные</h2><p>Введите суммы в одинаковых единицах.</p>
+<form><label>Оборотные активы<input name="currentAssets" required inputmode="decimal" data-example="550"></label>
+<label>Краткосрочные обязательства<input name="currentLiabilities" required inputmode="decimal" data-example="300"></label>
+<label>Всего активов<input name="assets" required inputmode="decimal" data-example="1000"></label>
+<label>Прибыль до процентов и налогов (EBIT)<input name="ebit" required inputmode="decimal" data-example="120"></label>
+<label>Прибыль до налогообложения (EBT)<input name="ebt" required inputmode="decimal" data-example="90"></label>
+<label>Выручка<input name="sales" required inputmode="decimal" data-example="1100"></label>
+<div class="actions"><button>Рассчитать</button><button type="button" id="example">Заполнить пример</button></div></form></section>
+<section class="result"><h2>Результат</h2><div id="output" role="status">Здесь появится результат расчёта.</div><h3>Формула</h3><p class="formula">S = 1,03 × A + 3,07 × B + 0,66 × C + 0,40 × D</p>
+<p>Порог модели — 0,862.</p><dl><dt>A</dt><dd>(Оборотные активы − краткосрочные обязательства) / все активы</dd><dt>B</dt><dd>EBIT / все активы</dd><dt>C</dt><dd>Прибыль до налогообложения / краткосрочные обязательства</dd><dt>D</dt><dd>Выручка / все активы</dd></dl>
+</section></div></main></body></html>
+

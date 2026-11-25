@@ -1,0 +1,13 @@
+﻿<!doctype html>
+<html lang="ru">
+<head><base href="../"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Текущая ликвидность</title><link rel="stylesheet" href="liquidity/style.css"><script src="_framework/blazor.webassembly.js" autostart="false"></script><script src="liquidity/app.js" data-mode="liquidity" defer></script></head>
+<body><main><p><a href="./">Все калькуляторы</a></p>
+<header><h1>Текущая ликвидность</h1><p>Оценка покрытия краткосрочных обязательств оборотными активами.</p></header>
+<div class="layout"><section><h2>Исходные данные</h2><p>Введите суммы в одинаковых единицах.</p>
+<form><label>Оборотные активы<input name="currentAssets" required inputmode="decimal" data-example="550"></label>
+<label>Краткосрочные обязательства<input name="currentLiabilities" required inputmode="decimal" data-example="300"></label>
+<div class="actions"><button>Рассчитать</button><button type="button" id="example">Заполнить пример</button></div></form></section>
+<section class="result"><h2>Результат</h2><div id="output" role="status">Здесь появится результат расчёта.</div><h3>Формула</h3><p class="formula">К = оборотные активы / краткосрочные обязательства</p>
+<p>Коэффициент показывает, сколько денежных единиц оборотных активов приходится на одну денежную единицу краткосрочных обязательств.</p>
+</section></div></main></body></html>
+
